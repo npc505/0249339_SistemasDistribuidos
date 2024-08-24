@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"sync"
 
@@ -14,7 +13,7 @@ type Record struct {
 }
 
 type Log struct {
-	mu      sync.RWMutex
+	mu      sync.Mutex
 	records []Record
 }
 
@@ -24,7 +23,7 @@ func main() {
 	r := gin.Default()
 	r.POST("/", handleLogPOST)
 	r.GET("/", handleLogGET)
-	fmt.Println("Server running on :8080")
+
 	r.Run(":8080")
 }
 
@@ -42,7 +41,6 @@ func handleLogPOST(ctx *gin.Context) {
 	log.records = append(log.records, req.Record)
 	log.mu.Unlock()
 
-	fmt.Printf("Nuevo registro añadido: Offset=%d, Value=%s\n", req.Record.Offset, req.Record.Value)
 	ctx.JSON(http.StatusOK, gin.H{"offset": req.Record.Offset})
 }
 
@@ -57,10 +55,8 @@ func handleLogGET(ctx *gin.Context) {
 		}
 	}
 
-	fmt.Printf("Solicitud GET recibida para offset: %d\n", req.Offset)
-
-	log.mu.RLock()
-	defer log.mu.RUnlock()
+	log.mu.Lock()
+	defer log.mu.Unlock()
 
 	if req.Offset >= uint64(len(log.records)) {
 		ctx.JSON(http.StatusNotFound, gin.H{"error": "record not found"})
