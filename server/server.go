@@ -4,7 +4,13 @@ import (
 	"context"
 
 	api "logs/api/v1"
+
+	"google.golang.org/grpc"
 )
+
+type Config struct {
+	CommitLog CommitLog
+}
 
 var _ api.LogServer = (*grpcServer)(nil)
 
@@ -20,8 +26,14 @@ func newgrpcServer(config *Config) (*grpcServer, error) {
 	return srv, nil
 }
 
-type Config struct {
-	CommitLog CommitLog
+func NewGRPCServer(config *Config) (*grpc.Server, error) {
+	gsrv := grpc.NewServer()
+	srv, err := newgrpcServer(config)
+	if err != nil {
+		return nil, err
+	}
+	api.RegisterLogServer(gsrv, srv)
+	return gsrv, nil
 }
 
 func (s *grpcServer) Produce(ctx context.Context, req *api.ProduceRequest) (

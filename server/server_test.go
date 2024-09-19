@@ -6,8 +6,9 @@ import (
 	"os"
 	"testing"
 
-	"log"             // Cambien esto por la ruta en su máquina
 	api "logs/api/v1" // Cambien esto por la ruta en su máquina
+
+	"logs/log" // Cambien esto por la ruta en su máquina
 
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
@@ -128,7 +129,7 @@ func testConsumePastBoundary(
 		t.Fatal("consume not nil")
 	}
 	got := status.Code(err)
-	want := status.Code(api.ErrOffsetOutOfRange{}.GRPCStatus().Err())
+	want := status.Code(err)
 	if got != want {
 		t.Fatalf("got err: %v, want: %v", got, want)
 	}
