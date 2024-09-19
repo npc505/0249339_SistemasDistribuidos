@@ -17,14 +17,13 @@ func TestStoreAppendRead(t *testing.T) {
 	require.NoError(t, err)
 	defer os.Remove(f.Name())
 
-	//cambiando nombre a addStore porque la mía se llama así
-	s, err := addStore(f)
+	s, err := newStore(f)
 	require.NoError(t, err)
 
 	testAppend(t, s)
 	testRead(t, s)
 	testReadAt(t, s)
-	s, err = addStore(f)
+	s, err = newStore(f)
 	require.NoError(t, err)
 	testRead(t, s)
 }
@@ -71,7 +70,7 @@ func TestStoreClose(t *testing.T) {
 	f, err := os.CreateTemp("", "store_close_test")
 	require.NoError(t, err)
 	defer os.Remove(f.Name())
-	s, err := addStore(f)
+	s, err := newStore(f)
 	require.NoError(t, err)
 	_, _, err = s.Append(write)
 	require.NoError(t, err)
