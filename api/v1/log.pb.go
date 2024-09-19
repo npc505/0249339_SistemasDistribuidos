@@ -75,6 +75,194 @@ func (x *Record) GetOffset() uint64 {
 	return 0
 }
 
+type ProduceRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Record *Record `protobuf:"bytes,1,opt,name=record,proto3" json:"record,omitempty"`
+}
+
+func (x *ProduceRequest) Reset() {
+	*x = ProduceRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_v1_log_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ProduceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProduceRequest) ProtoMessage() {}
+
+func (x *ProduceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_log_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProduceRequest.ProtoReflect.Descriptor instead.
+func (*ProduceRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_log_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ProduceRequest) GetRecord() *Record {
+	if x != nil {
+		return x.Record
+	}
+	return nil
+}
+
+type ProduceResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Offset uint64 `protobuf:"varint,1,opt,name=offset,proto3" json:"offset,omitempty"`
+}
+
+func (x *ProduceResponse) Reset() {
+	*x = ProduceResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_v1_log_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ProduceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProduceResponse) ProtoMessage() {}
+
+func (x *ProduceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_log_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProduceResponse.ProtoReflect.Descriptor instead.
+func (*ProduceResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_log_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ProduceResponse) GetOffset() uint64 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+type ConsumeRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Offset uint64 `protobuf:"varint,1,opt,name=offset,proto3" json:"offset,omitempty"`
+}
+
+func (x *ConsumeRequest) Reset() {
+	*x = ConsumeRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_v1_log_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConsumeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConsumeRequest) ProtoMessage() {}
+
+func (x *ConsumeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_log_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConsumeRequest.ProtoReflect.Descriptor instead.
+func (*ConsumeRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_log_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ConsumeRequest) GetOffset() uint64 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+type ConsumeResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Record *Record `protobuf:"bytes,2,opt,name=record,proto3" json:"record,omitempty"`
+}
+
+func (x *ConsumeResponse) Reset() {
+	*x = ConsumeResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_api_v1_log_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConsumeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConsumeResponse) ProtoMessage() {}
+
+func (x *ConsumeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_log_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConsumeResponse.ProtoReflect.Descriptor instead.
+func (*ConsumeResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_log_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ConsumeResponse) GetRecord() *Record {
+	if x != nil {
+		return x.Record
+	}
+	return nil
+}
+
 var File_api_v1_log_proto protoreflect.FileDescriptor
 
 var file_api_v1_log_proto_rawDesc = []byte{
@@ -83,8 +271,36 @@ var file_api_v1_log_proto_rawDesc = []byte{
 	0x72, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x0c, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x6f, 0x66, 0x66, 0x73,
 	0x65, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x6f, 0x66, 0x66, 0x73, 0x65, 0x74,
-	0x42, 0x0d, 0x5a, 0x0b, 0x6c, 0x6f, 0x67, 0x73, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x36, 0x0a, 0x0e, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x24, 0x0a, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x0c, 0x2e, 0x6c, 0x6f, 0x67, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64,
+	0x52, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x22, 0x29, 0x0a, 0x0f, 0x50, 0x72, 0x6f, 0x64,
+	0x75, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x6f,
+	0x66, 0x66, 0x73, 0x65, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x6f, 0x66, 0x66,
+	0x73, 0x65, 0x74, 0x22, 0x28, 0x0a, 0x0e, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x6f, 0x66, 0x66, 0x73, 0x65, 0x74, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x6f, 0x66, 0x66, 0x73, 0x65, 0x74, 0x22, 0x37, 0x0a,
+	0x0f, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x24, 0x0a, 0x06, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x0c, 0x2e, 0x6c, 0x6f, 0x67, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x06,
+	0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x32, 0xff, 0x01, 0x0a, 0x03, 0x4c, 0x6f, 0x67, 0x12, 0x38,
+	0x0a, 0x07, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65, 0x12, 0x14, 0x2e, 0x6c, 0x6f, 0x67, 0x73,
+	0x2e, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x15, 0x2e, 0x6c, 0x6f, 0x67, 0x73, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x38, 0x0a, 0x07, 0x43, 0x6f, 0x6e, 0x73,
+	0x75, 0x6d, 0x65, 0x12, 0x14, 0x2e, 0x6c, 0x6f, 0x67, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x73, 0x75,
+	0x6d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x6c, 0x6f, 0x67, 0x73,
+	0x2e, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x00, 0x12, 0x40, 0x0a, 0x0d, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x53, 0x74, 0x72,
+	0x65, 0x61, 0x6d, 0x12, 0x14, 0x2e, 0x6c, 0x6f, 0x67, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x73, 0x75,
+	0x6d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x6c, 0x6f, 0x67, 0x73,
+	0x2e, 0x43, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x00, 0x30, 0x01, 0x12, 0x42, 0x0a, 0x0d, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65, 0x53,
+	0x74, 0x72, 0x65, 0x61, 0x6d, 0x12, 0x14, 0x2e, 0x6c, 0x6f, 0x67, 0x73, 0x2e, 0x50, 0x72, 0x6f,
+	0x64, 0x75, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x6c, 0x6f,
+	0x67, 0x73, 0x2e, 0x50, 0x72, 0x6f, 0x64, 0x75, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x30, 0x01, 0x42, 0x0d, 0x5a, 0x0b, 0x6c, 0x6f, 0x67, 0x73,
+	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -99,16 +315,30 @@ func file_api_v1_log_proto_rawDescGZIP() []byte {
 	return file_api_v1_log_proto_rawDescData
 }
 
-var file_api_v1_log_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_api_v1_log_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_api_v1_log_proto_goTypes = []any{
-	(*Record)(nil), // 0: logs.Record
+	(*Record)(nil),          // 0: logs.Record
+	(*ProduceRequest)(nil),  // 1: logs.ProduceRequest
+	(*ProduceResponse)(nil), // 2: logs.ProduceResponse
+	(*ConsumeRequest)(nil),  // 3: logs.ConsumeRequest
+	(*ConsumeResponse)(nil), // 4: logs.ConsumeResponse
 }
 var file_api_v1_log_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: logs.ProduceRequest.record:type_name -> logs.Record
+	0, // 1: logs.ConsumeResponse.record:type_name -> logs.Record
+	1, // 2: logs.Log.Produce:input_type -> logs.ProduceRequest
+	3, // 3: logs.Log.Consume:input_type -> logs.ConsumeRequest
+	3, // 4: logs.Log.ConsumeStream:input_type -> logs.ConsumeRequest
+	1, // 5: logs.Log.ProduceStream:input_type -> logs.ProduceRequest
+	2, // 6: logs.Log.Produce:output_type -> logs.ProduceResponse
+	4, // 7: logs.Log.Consume:output_type -> logs.ConsumeResponse
+	4, // 8: logs.Log.ConsumeStream:output_type -> logs.ConsumeResponse
+	2, // 9: logs.Log.ProduceStream:output_type -> logs.ProduceResponse
+	6, // [6:10] is the sub-list for method output_type
+	2, // [2:6] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_api_v1_log_proto_init() }
@@ -129,6 +359,54 @@ func file_api_v1_log_proto_init() {
 				return nil
 			}
 		}
+		file_api_v1_log_proto_msgTypes[1].Exporter = func(v any, i int) any {
+			switch v := v.(*ProduceRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_v1_log_proto_msgTypes[2].Exporter = func(v any, i int) any {
+			switch v := v.(*ProduceResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_v1_log_proto_msgTypes[3].Exporter = func(v any, i int) any {
+			switch v := v.(*ConsumeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_api_v1_log_proto_msgTypes[4].Exporter = func(v any, i int) any {
+			switch v := v.(*ConsumeResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -136,9 +414,9 @@ func file_api_v1_log_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_v1_log_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   5,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_api_v1_log_proto_goTypes,
 		DependencyIndexes: file_api_v1_log_proto_depIdxs,
