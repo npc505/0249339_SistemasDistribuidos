@@ -1,0 +1,9 @@
+syntax = "proto3";
+package "http";
+
+option go_package = "http";
+
+message Record {
+    bytes value = 1;
+    uint64 offset = 2;
+}
