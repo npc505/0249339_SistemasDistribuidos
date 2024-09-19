@@ -22,13 +22,12 @@ type store struct {
 	size uint64
 }
 
-func addStore(f *os.File) (*store, error) {
+func newStore(f *os.File) (*store, error) {
 	fi, err := os.Stat(f.Name())
 	if err != nil {
 		return nil, err
 	}
 	size := uint64(fi.Size())
-
 	return &store{
 		File: f,
 		size: size,
@@ -39,27 +38,26 @@ func addStore(f *os.File) (*store, error) {
 func (s *store) Append(p []byte) (n uint64, pos uint64, err error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	w, err := s.buf.Write(p)
 	pos = s.size
+	if err := binary.Write(s.buf, enc, uint64(len(p))); err != nil {
+		return 0, 0, err
+	}
+	w, err := s.buf.Write(p)
 	if err != nil {
 		return 0, 0, err
 	}
 	w += lenWidth
 	s.size += uint64(w)
-	if err := binary.Write(s.buf, enc, uint64(len(p))); err != nil {
-		return 0, 0, err
-	}
 	return uint64(w), pos, nil
-
 }
 
 func (s *store) Read(pos uint64) ([]byte, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	size := make([]byte, lenWidth)
 	if err := s.buf.Flush(); err != nil {
 		return nil, err
 	}
+	size := make([]byte, lenWidth)
 	if _, err := s.File.ReadAt(size, int64(pos)); err != nil {
 		return nil, err
 	}
